@@ -5,11 +5,12 @@ if __name__ == "__main__":
                   '13657', 15817, '16187', '6381', 8409, '5177', 17357, '10814', 6679, 12241, '6556', 12913, 16454,
                   '17589', 5292, '13639', '7335', '11531', '14346', 7493, 15850, '12791', 11288]
 
-    # keeps new values to def[ine condition
+    # keeps new values to define condition
     new_values = None
 
     # delimiters from list
     delimiters = None
+    
     # repeated values count
     duplicate_values = {}
 
@@ -29,10 +30,11 @@ if __name__ == "__main__":
             rps_values += delimiters
             break
         rps_values.append(int(new_values))
-
+        
+    # sort values from smallest to largest
     rps_values = sorted(rps_values)
 
-    # if user inserted value was list
+    # if user inserted value was a list
     if delimiters is not None:
         first_delimiter, second_delimiter = sorted(delimiters)
         # slice list by inserted values left and right part
@@ -46,13 +48,13 @@ if __name__ == "__main__":
     print(rps_values)
     average = divmod(sum(rps_values), len(rps_values))[0]
     print("Среднее:", average)
+    
     # median value count
     quotient, remainder = divmod(len(rps_values), 2)
     median = rps_values[quotient] if remainder else sum(rps_values[quotient - 1: quotient + 1]) / 2
     print("Медиана:", median)
 
     average_and_mean_diff = None
-    # difference between average and median in %
     # difference between average and median in %
     if average > median:
         average_and_mean_diff = ((average - median) / average) * 100
@@ -68,7 +70,6 @@ if __name__ == "__main__":
     else:
         print("Происходят снижения")
 
-    # TODO проверить еще раз как это работает. Не дублировать один и тот же кусок кода!
     for value in set(rps_values):
         duplicate_values[value] = rps_values.count(value)
     print("Частоты встреченных значений: \n")
